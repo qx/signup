@@ -22,7 +22,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+# gem 'bootstrap-sass', '3.3.1.0'
+gem 'bootstrap-sass', '2.3.2.0'
 # The following optional lines are part of the advanced setup.
 # gem 'guard-rspec', '2.5.0'
 # Use ActiveModel has_secure_password
@@ -37,7 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec','2.14'
+  gem 'rspec', '2.14'
   gem 'rspec-rails'
   # gem 'rspec-rails', '2.13.1'
   # gem 'guard-rspec', '2.5.0'
