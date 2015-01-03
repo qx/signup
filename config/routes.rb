@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  match '/home', to: "static_pages#home", via: [:get, :post]
+  #两种路由书写方式均可
+  # root :to => 'static_pages#home'
+  root to: 'static_pages#home'
+  # match '/home', to: "static_pages#home", via: [:get, :post]
   match '/about', to: 'static_pages#about', via: [:get, :post]
   match '/help', to: 'static_pages#help', via: [:get, :post]
   match '/contact', to: 'static_pages#contact', via: [:get, :post]
