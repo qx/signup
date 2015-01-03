@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   #两种路由书写方式均可
   # root :to => 'static_pages#home'
   root to: 'static_pages#home'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   match '/about', to: 'static_pages#about', via: [:get, :post]
   match '/help', to: 'static_pages#help', via: [:get, :post]
   match '/contact', to: 'static_pages#contact', via: [:get, :post]
+  match '/signup', to: 'users#new', via: [:get, :post]
   resources :microposts
 
   resources :users
