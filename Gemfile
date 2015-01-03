@@ -49,6 +49,7 @@ group :development, :test do
   gem 'spring'
   gem 'guard-spork'
   gem 'spork', '1.0.0rc3'
+  gem 'annotate'
 end
 
 
