@@ -85,5 +85,6 @@ test:
 production:
   <<: *default
   database: signup_production
-  username: signup
-  password: <%= ENV['SIGNUP_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: 111111
+#  password: <%= ENV['SIGNUP_DATABASE_PASSWORD'] %>
