@@ -20,48 +20,26 @@ describe User do
   it { should respond_to(:email) }
   # 应该通过验证
   it { should be_valid }
-
-  describe "when name is not present" do
-    before { @user.name = " " }
-    # 不应该通过验证
-    it { should_not be_valid }
-  end
-  describe "when email is not present" do
-    before { @user.email = " " }
-    it { should_not be_valid }
+  it { should respond_to(:authenticate) }
+  describe "with a password that's too  short" do
+    before { @user.password = @user.password_confirmation = "a" * 5 }
+    it { should be_invalid }
   end
 
-  #创建不能通过的测试
-  describe "when email format is invalid" do
-    it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        @user.email = invalid_address
-        @user.should_not be_valid
-      end
+  describe "return value of authenticate method " do
+    before { @user.save }
+    let(:found_user) { User.find_by(email: @user.email) }
+
+    describe "with valid password  1 " do
+      it { should eq found_user.authenticate(@user.password) }
     end
-  end
 
-  # 创建可以通过的测试
-  describe "when email format is valid" do
-    it "should be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-      addresses.each do |valid_address|
-        @user.email = valid_address
-        @user.should be_valid
-      end
-    end
-  end
+    describe "with invalid password   2 " do
+      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
-  #   重复唯一性验证
-  describe "when email address is already taken" do
-    before do
-      # @user.dup 方法创建一个和 @user Email 地址一样的用户对象
-      user_with_same_email = @user.dup
-      user_with_same_email.save
+      it { should_not eq user_for_invalid_password }
+      # specify { expect(user_for_invalid_password).to be_false }
     end
-    # 不应该被通过验证
-    it { should_not be_valid }
   end
 
 end
