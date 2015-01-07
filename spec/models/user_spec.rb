@@ -12,8 +12,8 @@
 require 'spec_helper'
 
 describe User do
-  before { @user = User.new(name: '12345', email: 'my@email.com') }
-
+  before { @user = User.new(name: '12345', email: "my@email.com", password: '123456')
+  }
   subject { @user }
 
   it { should respond_to(:name) }
@@ -21,7 +21,7 @@ describe User do
   # 应该通过验证
   it { should be_valid }
   it { should respond_to(:authenticate) }
-  describe "with a password that's too  short" do
+  describe "with a password that's  too  short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
@@ -30,7 +30,7 @@ describe User do
     before { @user.save }
     let(:found_user) { User.find_by(email: @user.email) }
 
-    describe "with valid password  1 " do
+    describe " with valid password  1 " do
       it { should eq found_user.authenticate(@user.password) }
     end
 
