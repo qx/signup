@@ -10,12 +10,17 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'pg'
+
 group :development, :test do
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec', '2.14'
+  gem 'rspec-rails'
+  # gem 'rspec-rails', '2.13.1'
   # The following optional lines are part of the advanced setup.
-  gem 'guard-rspec', '2.5.0'
+  gem 'guard-rspec', require: false
   gem 'spork-rails', '4.0.0'
-  gem 'guard-spork', '1.5.0'
+  # gem 'guard-spork', '1.5.0'
+  gem 'guard-spork'
+  gem 'spork', '1.0.0rc3'
   gem 'childprocess', '0.3.6'
 end
 
